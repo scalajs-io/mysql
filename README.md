@@ -51,8 +51,10 @@ setTimeout(() => {
 val results = conn.query("SELECT * FROM activity LIMIT 1")
 results.onFields(fields => console.log("fields => %j", fields.head))
 results.onResult(console.log("row => %j", _))
+```
 
-// display the results
+```scala
+// retrieve some records via the `for` comprehension
 for {
   (rows, fields) <- conn.queryFuture[Activity]("SELECT * FROM activity LIMIT 1")
 } {
