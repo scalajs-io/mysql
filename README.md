@@ -2,7 +2,7 @@ MySQL API for Scala.js
 =======================
 This is a Scala.js type-safe binding for [mysql](https://www.npmjs.com/package/mysql) 
 
-DataStax Node.js Driver for Apache Cassandra.
+A node.js driver for MySQL. It is written in JavaScript, does not require compiling, and is 100% MIT licensed.
 
 #### Build Dependencies
 
