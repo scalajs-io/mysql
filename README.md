@@ -1,21 +1,23 @@
 MySQL API for Scala.js
 =======================
-This is a Scala.js type-safe binding for [mysql](https://www.npmjs.com/package/mysql) 
+[mysql](https://www.npmjs.com/package/mysql) - A node.js driver for MySQL. 
 
-A node.js driver for MySQL. It is written in JavaScript, does not require compiling, and is 100% MIT licensed.
+### Description
 
-#### Build Dependencies
+A node.js driver for mysql. It is written in JavaScript, does not require compiling, and is 100% MIT licensed.
 
-* [ScalaJs.io v0.3.x](https://github.com/ldaniels528/scalajs.io)
+### Build Dependencies
+
+* [ScalaJs.io v0.3.x](https://github.com/scalajs-io/scalajs.io)
 * [SBT v0.13.13](http://www.scala-sbt.org/download.html)
 
-#### Build/publish the SDK locally
+### Build/publish the SDK locally
 
 ```bash
 $ sbt clean publish-local
 ```
 
-#### Running the tests
+### Running the tests
 
 Before running the tests the first time, you must ensure the npm packages are installed:
 
@@ -29,9 +31,14 @@ Then you can run the tests:
 $ sbt test
 ```
 
-#### Examples
+### Examples
 
 ```scala
+import io.scalajs.nodejs._
+import io.scalajs.npm.mysql._
+import scala.concurrent.duration._
+import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
+
 // establish a connection
 val conn = MySQL.createConnection(
   new ConnectionOptions(
@@ -51,9 +58,7 @@ setTimeout(() => {
 val results = conn.query("SELECT * FROM activity LIMIT 1")
 results.onFields(fields => console.log("fields => %j", fields.head))
 results.onResult(console.log("row => %j", _))
-```
-
-```scala
+ 
 // retrieve some records via the `for` comprehension
 for {
   (rows, fields) <- conn.queryFuture[Activity]("SELECT * FROM activity LIMIT 1")
@@ -63,12 +68,12 @@ for {
 }
 ```
 
-#### Artifacts and Resolvers
+### Artifacts and Resolvers
 
-To add the `mysql` binding to your project, add the following to your build.sbt:  
+To add the `MySQL` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "mysql" % "0.3.0.3"
+libraryDependencies += "io.scalajs.npm" %%% "mysql" % "2.13.0"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
