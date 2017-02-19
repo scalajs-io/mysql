@@ -73,7 +73,7 @@ for {
 To add the `MySQL` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "mysql" % "2.13.0"
+libraryDependencies += "io.scalajs.npm" %%% "mysql" % "2.13.0-1"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:

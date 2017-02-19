@@ -3,8 +3,9 @@ package io.scalajs.npm.mysql
 import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream.Readable
-import io.scalajs.util.ScalaJsHelper._
+import io.scalajs.util.PromiseHelper._
 
+import scala.concurrent.Promise
 import scala.scalajs.js
 
 /**
@@ -124,23 +125,23 @@ object Connection {
   implicit class ConnectionExtensions(val connection: Connection) extends AnyVal {
 
     @inline
-    def beginTransactionFuture() = futureCallbackE0[Error](connection.beginTransaction(_))
+    def beginTransactionFuture(): Promise[Unit] = promiseWithError0[Error](connection.beginTransaction(_))
 
     @inline
-    def endFuture() = futureCallbackE0[Error](connection.end(_))
+    def endFuture(): Promise[Unit] = promiseWithError0[Error](connection.end(_))
 
     @inline
-    def queryFuture[T <: RowDataPacket](query: String) = {
-      futureCallbackE2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(query, _))
+    def queryFuture[T <: RowDataPacket](query: String): Promise[(js.Array[T], js.Array[FieldPacket])] = {
+      promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(query, _))
     }
 
     @inline
-    def queryFuture[T <: RowDataPacket](options: QueryOptions) = {
-      futureCallbackE2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(options, _))
+    def queryFuture[T <: RowDataPacket](options: QueryOptions): Promise[(js.Array[T], js.Array[FieldPacket])] = {
+      promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(options, _))
     }
 
     @inline
-    def rollback() = futureCallbackA0(connection.rollback(_))
+    def rollback(): Promise[Unit] = promiseCallback0(connection.rollback)
 
   }
 
