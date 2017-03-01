@@ -8,7 +8,6 @@ A node.js driver for mysql. It is written in JavaScript, does not require compil
 
 ### Build Dependencies
 
-* [ScalaJs.io v0.3.x](https://github.com/scalajs-io/scalajs.io)
 * [SBT v0.13.13](http://www.scala-sbt.org/download.html)
 
 ### Build/publish the SDK locally
@@ -73,7 +72,7 @@ for {
 To add the `MySQL` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "mysql" % "2.13.0-1"
+libraryDependencies += "io.scalajs.npm" %%% "mysql" % "2.13.0-2"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
