@@ -5,8 +5,8 @@ import sbt._
 
 import scala.language.postfixOps
 
-val apiVersion = "2.13.0-3"
-val scalaJsIOVersion = "0.3.0.7"
+val apiVersion = "2.13.0-4"
+val scalaJsIOVersion = "0.3.0.8"
 val scalaJsVersion = "2.12.1"
 
 homepage := Some(url("https://github.com/scalajs.io/mysql"))
