@@ -125,23 +125,23 @@ object Connection {
   implicit class ConnectionExtensions(val connection: Connection) extends AnyVal {
 
     @inline
-    def beginTransactionFuture(): Promise[Unit] = promiseWithError0[Error](connection.beginTransaction(_))
+    def beginTransactionAsync(): Promise[Unit] = promiseWithError0[Error](connection.beginTransaction(_))
 
     @inline
-    def endFuture(): Promise[Unit] = promiseWithError0[Error](connection.end(_))
+    def endAsync(): Promise[Unit] = promiseWithError0[Error](connection.end(_))
 
     @inline
-    def queryFuture[T <: RowDataPacket](query: String): Promise[(js.Array[T], js.Array[FieldPacket])] = {
+    def queryAsync[T <: RowDataPacket](query: String): Promise[(js.Array[T], js.Array[FieldPacket])] = {
       promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(query, _))
     }
 
     @inline
-    def queryFuture[T <: RowDataPacket](options: QueryOptions): Promise[(js.Array[T], js.Array[FieldPacket])] = {
+    def queryAsync[T <: RowDataPacket](options: QueryOptions): Promise[(js.Array[T], js.Array[FieldPacket])] = {
       promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(options, _))
     }
 
     @inline
-    def rollback(): Promise[Unit] = promiseCallback0(connection.rollback)
+    def rollbackAsync(): Promise[Unit] = promiseCallback0(connection.rollback)
 
   }
 
