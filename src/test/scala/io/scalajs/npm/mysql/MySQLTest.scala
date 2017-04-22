@@ -28,7 +28,7 @@ class MySQLTest extends FunSpec {
     it("can execute queries via promises") {
       getConnection foreach { conn =>
         for {
-          (rows, fields) <- conn.queryFuture[Activity]("SELECT * FROM activity LIMIT 1").future
+          (rows, fields) <- conn.queryFuture[Activity]("SELECT * FROM activity LIMIT 1")
         } {
           info(s"fields => ${JSON.stringify(fields.head)}")
           info(s"rows => ${JSON.stringify(rows.head)}")

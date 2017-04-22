@@ -3,7 +3,7 @@ package io.scalajs.npm.mysql
 import io.scalajs.npm.mysql.PoolClusterOptions.Selector
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSName, ScalaJSDefined}
+import scala.scalajs.js.annotation.{JSGlobal, JSName, ScalaJSDefined}
 
 /**
   * MySQL Pool Cluster Options
@@ -33,21 +33,21 @@ object PoolClusterOptions {
     * Select one alternately. (Round-Robin)
     */
   @js.native
-  @JSName("RR")
+  @JSGlobal("RR")
   object RR extends Selector
 
   /**
     * Select the node by random function.
     */
   @js.native
-  @JSName("RANDOM")
+  @JSGlobal("RANDOM")
   object RANDOM extends Selector
 
   /**
     * Select the first node available unconditionally.
     */
   @js.native
-  @JSName("ORDER")
+  @JSGlobal("ORDER")
   object ORDER extends Selector
 
 }

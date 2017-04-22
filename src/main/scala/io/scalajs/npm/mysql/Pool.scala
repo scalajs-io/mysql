@@ -4,7 +4,7 @@ import io.scalajs.nodejs.Error
 import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 
 /**
@@ -38,7 +38,7 @@ object Pool {
   implicit class PoolExtensions(val pool: Pool) extends AnyVal {
 
     @inline
-    def getConnectionFuture: Promise[Connection] = promiseWithError1[Error, Connection](pool.getConnection(_))
+    def getConnectionFuture: Future[Connection] = promiseWithError1[Error, Connection](pool.getConnection(_))
 
     /**
       * The pool will emit a connection event when a new connection is made within the pool. If you need to set

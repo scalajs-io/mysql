@@ -5,7 +5,7 @@ import io.scalajs.nodejs.events.IEventEmitter
 import io.scalajs.nodejs.stream.Readable
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 
 /**
@@ -125,23 +125,23 @@ object Connection {
   implicit class ConnectionExtensions(val connection: Connection) extends AnyVal {
 
     @inline
-    def beginTransactionAsync(): Promise[Unit] = promiseWithError0[Error](connection.beginTransaction(_))
+    def beginTransactionFuture(): Future[Unit] = promiseWithError0[Error](connection.beginTransaction(_))
 
     @inline
-    def endAsync(): Promise[Unit] = promiseWithError0[Error](connection.end(_))
+    def endFuture(): Future[Unit] = promiseWithError0[Error](connection.end(_))
 
     @inline
-    def queryAsync[T <: RowDataPacket](query: String): Promise[(js.Array[T], js.Array[FieldPacket])] = {
+    def queryFuture[T <: RowDataPacket](query: String): Future[(js.Array[T], js.Array[FieldPacket])] = {
       promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(query, _))
     }
 
     @inline
-    def queryAsync[T <: RowDataPacket](options: QueryOptions): Promise[(js.Array[T], js.Array[FieldPacket])] = {
+    def queryFuture[T <: RowDataPacket](options: QueryOptions): Future[(js.Array[T], js.Array[FieldPacket])] = {
       promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(options, _))
     }
 
     @inline
-    def rollbackAsync(): Promise[Unit] = promiseCallback0(connection.rollback)
+    def rollbackFuture(): Future[Unit] = promiseCallback0(connection.rollback)
 
   }
 
