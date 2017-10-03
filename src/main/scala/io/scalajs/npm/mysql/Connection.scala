@@ -131,6 +131,16 @@ object Connection {
     def endFuture(): Future[Unit] = promiseWithError0[Error](connection.end(_))
 
     @inline
+    def executeFuture(query: String): Future[OkPacket] = {
+      promiseWithError1[Error, OkPacket](connection.query(query, _))
+    }
+
+    @inline
+    def executeFuture(options: QueryOptions): Future[OkPacket] = {
+      promiseWithError1[Error, OkPacket](connection.query(options, _))
+    }
+
+    @inline
     def queryFuture[T <: RowDataPacket](query: String): Future[(js.Array[T], js.Array[FieldPacket])] = {
       promiseWithError2[Error, js.Array[T], js.Array[FieldPacket]](connection.query(query, _))
     }

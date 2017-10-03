@@ -8,6 +8,7 @@ import scala.scalajs.js
   */
 @js.native
 trait FieldPacket extends js.Object {
+
   var catalog: String = js.native
 
   var db: String = js.native
