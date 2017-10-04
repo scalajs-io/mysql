@@ -1,7 +1,6 @@
 package io.scalajs.npm.mysql
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * MySQL Pool Options
@@ -16,9 +15,8 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   *                           from getConnection. If set to 0, there is no limit to the number of queued connection
   *                           requests. (Default: 0)
   */
-@ScalaJSDefined
 class PoolOptions(var acquireTimeout: js.UndefOr[Int] = js.undefined,
                   var waitForConnections: js.UndefOr[Boolean] = js.undefined,
                   var connectionLimit: js.UndefOr[Int] = js.undefined,
                   var queueLimit: js.UndefOr[Int] = js.undefined)
-    extends js.Object
+  extends ConnectionOptions

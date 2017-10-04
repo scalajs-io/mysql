@@ -3,7 +3,7 @@ package io.scalajs.npm.mysql
 import io.scalajs.npm.mysql.PoolClusterOptions.Selector
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSGlobal, JSName, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSGlobal
 
 /**
   * MySQL Pool Cluster Options
@@ -15,12 +15,11 @@ import scala.scalajs.js.annotation.{JSGlobal, JSName, ScalaJSDefined}
   *                             re-used. (Default: 0)
   * @param defaultSelector      The default selector. (Default: RR)
   */
-@ScalaJSDefined
 class PoolClusterOptions(var canRetry: js.UndefOr[Boolean] = js.undefined,
                          var removeNodeErrorCount: js.UndefOr[Int] = js.undefined,
                          var restoreNodeTimeout: js.UndefOr[Int] = js.undefined,
                          var defaultSelector: js.UndefOr[Selector] = js.undefined)
-    extends js.Object
+  extends js.Object
 
 /**
   * Pool Cluster Options

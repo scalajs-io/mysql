@@ -1,7 +1,6 @@
 package io.scalajs.npm.mysql
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 /**
   * MySQL Connection Options
@@ -28,7 +27,6 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @param flags              List of connection flags to use other than the default ones. It is also possible to blacklist default ones. For more information, check Connection Flags.
   * @param ssl                object with ssl parameters or a string containing name of ssl profile. See SSL options.
   */
-@ScalaJSDefined
 class ConnectionOptions(var host: js.UndefOr[String] = js.undefined,
                         var port: js.UndefOr[Int] = js.undefined,
                         var localAddress: js.UndefOr[String] = js.undefined,
@@ -51,4 +49,4 @@ class ConnectionOptions(var host: js.UndefOr[String] = js.undefined,
                         var multipleStatements: js.UndefOr[Boolean] = js.undefined,
                         var flags: js.UndefOr[String] = js.undefined,
                         var ssl: js.UndefOr[SSLOptions] = js.undefined)
-    extends js.Object
+  extends js.Object

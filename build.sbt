@@ -9,17 +9,17 @@ val scalaJsIOVersion = "0.4.1"
 val apiVersion = scalaJsIOVersion
 val scalaJsVersion = "2.12.3"
 
-homepage := Some(url("https://github.com/scalajs-io/mysql"))
-
 lazy val root = (project in file(".")).
   enablePlugins(ScalaJSPlugin).
   settings(
     name := "mysql",
     organization := "io.scalajs.npm",
     description := "MySQL API bindings for Scala.js",
+    homepage := Some(url("https://github.com/scalajs-io/mysql")),
     version := apiVersion,
     scalaVersion := scalaJsVersion,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
     autoCompilerPlugins := true,
     scalaJSModuleKind := ModuleKind.CommonJSModule,
