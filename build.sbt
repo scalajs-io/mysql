@@ -7,7 +7,7 @@ import scala.language.postfixOps
 
 val scalaJsIOVersion = "0.5.0"
 val apiVersion = scalaJsIOVersion
-val scalaJsVersion = "2.12.8"
+val scalaJsVersion = "2.12.10"
 
 lazy val root = (project in file(".")).
   enablePlugins(ScalaJSPlugin).
